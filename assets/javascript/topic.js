@@ -13,7 +13,6 @@ $( document ).ready(function() {
 	//     button to be clicked
 	//  *****************************
 	putUpTopicButtons();
-	console.log('buttons up');
 	getInfoFromAPI(theTopics);
 	//  *****************************
 
@@ -24,7 +23,6 @@ $( document ).ready(function() {
 		for (var i = 0; i < topics.length; i++) {
 		    var j = $('<button>');
 		    j.data('theTopics',topics[i]); // Added a data-attribute
-		    console.log(j.data('theTopics'));
 		    j.attr('data-index', i);
 		    j.addClass('buttnCntr');  // use for button selection
 	   		j.text(topics[i]);
@@ -66,7 +64,7 @@ $( document ).ready(function() {
                			topicImage.attr("data-animate", results[i].images.fixed_height.url);
                			// add a class to track and a state if animating or not
                			topicImage.addClass("eachImage");
-               			topicImage.data("state", "still");
+               			topicImage.data("state", "animate");
                			gifDiv.append(p);
                			gifDiv.append(topicImage);
                			$(".theImagesContainer").append(gifDiv);              			
@@ -78,39 +76,33 @@ $( document ).ready(function() {
   // if click on a topic button then put up new images
 	$('.buttnCntr').on('click', function() {
    		var temptopic = $(this).data('theTopics');
-    	console.log("new var", temptopic);
     	$('.theImagesContainer').empty();
     	getInfoFromAPI(temptopic);
   
 	});
 	
 	// if click on an image use the state attribute to animate or not
-	$(".theImagesContainer").on('click', function() {
+	// use this on-click format for dynamic situations
+	$(document).on('click', '.eachImage', function(){  
 		var holdstate = $(this).data('state');
-		console.log("state", holdstate);
-		var holdclass = $(this).show();
-		console.log("class", holdclass);
 
-			if ( holdstate == 'still'){
-                $(this).attr('src', $(this).data('animate'));
-                $(this).attr('data-state', 'animate');
+			if ( holdstate === "still"){
+                $(this).attr("src", $(this).data("animate"));
+                $(this).data("state", "animate");
             }else{
-                $(this).attr('src', $(this).data('still'));
-                $(this).attr('data-state', 'still');
+                $(this).attr("src", $(this).data("still"));
+                $(this).data("state", "still");
             }
-
 	});
 
 	//  if click submit to add another topic to array and display
 	$("#Submit").on("click", function() { 
-		console.log('clic');
 		var y = getNewTopic();
 		// check that something had been input so don't add empty buttons
 		if (y != "") {
 			addToTopicArray(y);
 			putUpTopicButtons();
 			document.getElementById("inpTopicsForm").reset();
-			console.log("came to submit");
 			return false;
 		}
 	});

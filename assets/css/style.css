@@ -1,11 +1,10 @@
 
 
-	body { background-color:pink;}
-
-	.container {width: 1028px;}
-		.form-control {width: 100px;}
-		.theImagesContainer {margin: auto 0; max-width: 960px;
-			 font-size: 20px;
-			border: 4px; background-color: blue; float: left;
-			}
-	h5 {text-align: center; font-size: 30px;}
+	body, .form-control { background-color:pink;}
+	.buttnContainer {margin: auto; padding: 20px;}
+	.container {width: 100%;}
+	.form-control {margin: auto; border: none;}
+	.theImagesContainer {margin: auto; padding: 20px; width: 75%;
+		font-size: 20px;border: 4px; background-color: purple; float: left;}
+	h5 {text-align: center; font-size: 40px;}
+	p {color: white;}

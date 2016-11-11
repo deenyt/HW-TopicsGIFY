@@ -12,23 +12,26 @@
 </head>
 
 <body>
+    <br>
     <h5>Flower Frenzie</h5>
     <br> <br>
-    <!-- buttnContainer holds all the buttons of the topics  -->
-    <div class = "buttnContainer">
-    </div>
+    <div class="container">
+        <!-- buttnContainer holds all the buttons of the topics  -->
+        <div class = "buttnContainer">
+        </div>
 
-    <br>
-    <!-- this form takes input of a new topic to be added to the list  -->
-    <form id="inpTopicsForm" action="form_action.asp">
-        Add a Flower: <input type="text" name="topicButton" id="flower" 
-            placeholder ="Enter flower name" required>
-        <input type="submit" id="Submit">
-    </form>
-
-    <br>
-    <!-- theImagesContainer holds all the images from the API Giffy for the topics -->
-    <div class ="theImagesContainer">
+        <!-- this form takes input of a new topic to be added to the list  -->
+        <div class="form-control">
+          <form id="inpTopicsForm" action="form_action.asp">
+            Add a Flower: <input type="text" name="topicButton" id="flower" 
+              placeholder ="Enter flower name" required>
+            <input type="submit" id="Submit">
+          </form>
+        </div>
+        <br>
+        <!-- theImagesContainer holds all the images from the API Giffy for the topics -->
+        <div class ="theImagesContainer">
+        </div>
     </div>
       
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js">
