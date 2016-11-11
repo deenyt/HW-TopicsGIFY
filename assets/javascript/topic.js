@@ -5,7 +5,7 @@ $( document ).ready(function() {
 	var	topics = ["Tulip","Rose","Lilly",
 		"Daffodil","Geranium","Orchids",
 		"Daisies","Sunflowers","Aconite",
-		"Allium"]
+		"Allium"];
 	// variable to hold what topic, var's used to be more generic	
 	var theTopics = "flower";
 
@@ -18,7 +18,7 @@ $( document ).ready(function() {
 	//  *****************************
 
 	// ========================================================
-	/*  display 1 question and 4 answer choices */
+	/*  display the different buttons available*/
 	function putUpTopicButtons (){
 		$(".buttnContainer").empty();
 		for (var i = 0; i < topics.length; i++) {
@@ -27,19 +27,14 @@ $( document ).ready(function() {
 		    console.log(j.data('theTopics'));
 		    j.attr('data-index', i);
 		    j.addClass('buttnCntr');  // use for button selection
-		   var tempto = j.addClass('buttnCntr'); 
-		   console.log('tempto',tempto);
 	   		j.text(topics[i]);
 	   		$(".buttnContainer").append(j);			   
 		}
 	}
 	// ========================================================
-	// This function displays how many correct or wrong or unanswered
-	//    after all qustions have been gone through
+	// This function gets the inputted new topic
 	function getNewTopic ()  {
-
-		var x = $("#flower").val().trim();
-			console.log('x', x);
+			var x = $("#flower").val().trim();
 			$("#flower").empty();
 			return x;
 	}
@@ -52,12 +47,10 @@ $( document ).ready(function() {
 
 	// get the API information
 	function getInfoFromAPI (whichTopic) {
-		console.log(whichTopic);
 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + whichTopic+ "&api_key=dc6zaTOxFJmzC&limit=10";																			
     	$.ajax({url: queryURL, method: 'GET'})
      		.done(function(response) {
         		var results = response.data;
-    			console.log(results);
        			for (var i=0; i < results.length; i++) {
            			if (results[i].rating == "r" || results[i].rating == "pg-13")
            			{   // don't get 'R' or 'pg-13'
@@ -73,15 +66,10 @@ $( document ).ready(function() {
                			topicImage.attr("data-animate", results[i].images.fixed_height.url);
                			// add a class to track and a state if animating or not
                			topicImage.addClass("eachImage");
-               			//var tempstuff = topicImage.addClass("eachImage");
-               			//console.log("tempstuff",tempstuff);
                			topicImage.data("state", "still");
-               			var holdst = topicImage.data("state", "still");
-               			console.log ("holdst",holdst);
                			gifDiv.append(p);
                			gifDiv.append(topicImage);
-               			$(".theImagesContainer").append(gifDiv);
-               			
+               			$(".theImagesContainer").append(gifDiv);              			
            			}
         		}
     	});
@@ -98,7 +86,6 @@ $( document ).ready(function() {
 	
 	// if click on an image use the state attribute to animate or not
 	$(".theImagesContainer").on('click', function() {
-		//$(this).data('state');
 		var holdstate = $(this).data('state');
 		console.log("state", holdstate);
 		var holdclass = $(this).show();
@@ -118,6 +105,7 @@ $( document ).ready(function() {
 	$("#Submit").on("click", function() { 
 		console.log('clic');
 		var y = getNewTopic();
+		// check that something had been input so don't add empty buttons
 		if (y != "") {
 			addToTopicArray(y);
 			putUpTopicButtons();

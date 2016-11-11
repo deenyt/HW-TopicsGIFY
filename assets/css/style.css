@@ -2,23 +2,10 @@
 
 	body { background-color:pink;}
 
-
 	.container {width: 1028px;}
-	/*	.buttnContainer {background-color: blue}
-	*/
-	/*	.form-group {margin: 50px 50px 10px 50px; height:30px; 
-			width:200px; font-size: 20px;
-			border: 4px; background-color: orange} */
 		.form-control {width: 100px;}
 		.theImagesContainer {margin: auto 0; max-width: 960px;
 			 font-size: 20px;
 			border: 4px; background-color: blue; float: left;
 			}
-		h5 {text-align: center; font-size: 30px;}
-		
-	/*	.btn { margin-left: 60px;background-color: blue;
-			border: double;
-			padding: 15px;
-			text-align: center;}
-		
-	*/
+	h5 {text-align: center; font-size: 30px;}
